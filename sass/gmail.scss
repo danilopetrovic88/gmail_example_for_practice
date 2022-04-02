@@ -1,0 +1,50 @@
+@import 'header';
+@import 'left-sidebar';
+@import 'calendar';
+@import 'main-section';
+@import 'compose-form';
+@import 'right-sidebar';
+@import 'right-sidebar-calendar-loading';
+@import 'right-sidebar-calendar';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.loading-popup {
+    padding: 1rem;
+    width: 20rem;
+    display: flex;
+    background: rgba(255,255,255,0.9);
+    color: #555;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: opacity 1.5s;
+    position: fixed;
+
+    #popup-close {
+        cursor: pointer;
+    }
+
+    p {
+        margin: auto 0;
+    }
+}
+
+.hide-popup {
+    visibility: hidden;
+    opacity: 0;
+}

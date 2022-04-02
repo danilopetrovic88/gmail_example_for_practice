@@ -1,0 +1,315 @@
+.main {
+    width: 80%;
+    background-color: #000;
+    //float: right;
+    position: absolute;
+    top: 4rem;
+    left: 17%;
+    height: 100%;
+
+    // Main nav start
+    &-nav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.3rem 0;
+       // position: fixed;
+        background-color: #111;
+
+        &-left {
+            display: flex;
+            align-items: center;
+
+            .main-nav-item {
+                padding: 0 1rem;
+                color: #5f6368;
+                cursor: pointer;
+            }
+
+            .main-nav-checkbox {
+                display: flex;
+                align-items: center;
+
+                div {
+                    width: 2rem;
+                    height: 2.5rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    transition: background 0.3s ease-in-out;
+
+                    input[type="checkbox"] {
+                        height: 1.2rem;
+                        width: 1.2rem;
+                    }
+
+                    &:hover {
+                        background: rgba(100,100,100, 0.4);
+                    }
+                }
+
+                i {
+                    width: 1rem;
+                    height: 2.5rem;
+                    font-size: 0.9rem;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    color: #5f6368;
+                    transition: background 0.2s ease-in;
+
+                    &:hover {
+                        background: rgba(100,100,100, 0.4);
+                    }
+                }
+
+                #main-nav-checkbox-list {
+                    position: absolute;
+                    top: 2.5rem;
+                    left: 0.5rem;
+                    background: #fff;
+                    width: 8.5rem;
+                    height: 12rem;
+
+                    ul {
+                        list-style: none;
+                        margin-top: 0.5rem;
+
+                        li {
+                            padding: 0.1rem 2rem;
+                            display: block;
+
+                            &:hover {
+                                background: rgba(100,100,100, 0.4);
+                            }
+                        }
+                    }
+                }
+
+                .hide-list {
+                    display: none;
+                }
+            }
+
+            .main-nav-refresh {
+                width: 2rem;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                transition: background 0.3s ease-in-out;
+
+                &:hover {
+                    background: rgba(100,100,100, 0.4);
+                }
+            }
+
+            .main-nav-more {
+                width: 2rem;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                transition: background 0.3s ease-in-out;
+
+                &:hover {
+                    background: rgba(100,100,100, 0.4);
+                }
+
+                .main-nav-more-text {
+                    position: absolute;
+                    z-index: 70;
+                    top: 3rem;
+                    left: 7rem;
+                    color: #222;
+                    width: 15rem;
+                    height: 7rem;
+                    background-color: #fff;
+
+                    p {
+                        width: 80%;
+                        margin: 0 auto;
+
+                        &:nth-child(1) {
+                            padding: 0.5rem 0;
+                        }
+                    }
+                }
+
+                .hide-text {
+                    display: none;
+                }
+            }
+        }
+
+        &-right {
+            display: flex;
+
+            .main-nav-counter {
+                display: flex;
+                align-items: center;
+
+                &-numbers {
+                    display: flex;
+                    margin-right: 2rem;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    padding: 0.3rem;
+                    transition: background 0.3s ease-in-out;
+
+                    span {
+                        padding: 0 0.2rem;
+                        color: #aaa;
+                        font-size: 0.9rem;
+                    }
+
+                    &:hover {
+                        background: rgba(100,100,100, 0.4);
+                    }
+                }
+
+                &-arrows {
+                    margin-right: 1rem;
+                    display: flex;
+                    justify-content: space-between;
+                    width: 2rem;
+                    color: #aaa;
+                    cursor: pointer;
+
+                    #main-nav-arrow-left {
+                        color: #555;
+                    }
+                }
+            }
+        }
+    }
+
+    // Main nav end
+
+    // Main messages start
+    &__messages {
+        width: 100%;
+        //display: flex;
+        //justify-content: space-between;
+        align-items: center;
+        background-color: #222;
+        position: absolute;
+        overflow-y: scroll;
+        bottom: -49.1rem;
+// z-index: 1000;
+
+        &::-webkit-scrollbar {
+            width: 0.5rem;
+            background: #777;
+        }
+
+        &--item {
+            display: flex;
+            height: 2rem;
+            border-bottom: 1px solid #777;
+            position: relative;
+
+            &-left {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .item__input--check {
+                    width: 1.1rem;
+                    height: 1.1rem;
+                    background: #aaa;
+                    border: 3px solid #777;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    padding: 0.3rem;
+                    margin: 0 0.5rem;
+
+                    input[type="checkbox"] {
+                        opacity: 0;
+                    }
+                    input[type='checkbox']:checked {
+                        opacity: 1;
+                    }
+                }
+
+                .item__star {
+                    width: 1.1rem;
+                    height: 1.1rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    padding: 0.3rem;
+                    margin: 0 0.5rem;
+                    color: #777;
+                }
+
+                .item__name {
+                   // display: flex;
+                   // justify-content: center;
+                   // align-items: center;
+                    width: 5rem;
+                    color: #fff;
+                    margin: 0.5rem 0 0 0.5rem;
+                    cursor: pointer;
+                    
+                    h3 {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            &-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 70%;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 7rem;
+
+                .item__inbox {
+                    font-size: 1rem;
+                    background: rgba(100,100,100, 0.7);
+                    color: #aaa;
+                    display: flex;
+                    align-items: center;
+                    width: 3rem;
+                    justify-content: center;
+                    margin: auto 0;
+                }
+
+                .item__content {
+                    margin: auto;
+                    color: #fff;
+                    font-size: 0.9rem;
+                }
+            }
+
+            &-right {
+                display: flex;
+                position: absolute;
+                right: 0.7rem;
+                top: 0.4rem;
+
+
+                .item__time {
+                    color: #fff;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+    // Main messages end
+}

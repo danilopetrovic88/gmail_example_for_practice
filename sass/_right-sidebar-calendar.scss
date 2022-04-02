@@ -1,0 +1,212 @@
+.right-sidebar__calendar {
+    width: 20rem;
+    height: 100vh;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: 4rem;
+    border-left: 1px solid #aaa;
+    z-index: 199;
+
+    //right sidebar calendar header start
+    &--header {
+        width: 20rem;
+        height: 8%;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #aaa;
+
+        .calendar__header--left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 0.5rem;
+            color: #777;
+            position: relative;
+            
+            h5 {
+                padding: 0 0.25rem;
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+//position: absolute;
+                bottom: 1.3rem;
+                width: fit-content;
+                height: 0.5rem;
+            }
+            #calendar-date {
+                padding-top: 0.25rem;
+                padding-bottom: 0;
+                display: flex;
+                cursor: pointer;
+                width: fit-content;
+                border-radius: 3px;
+               // position: absolute;
+                top: -1.5rem;
+
+                i {
+                    margin-left: 0.5rem;
+                }
+
+                &:hover {
+                    background: rgba(100,100,100,0.1);
+                }
+            }
+        }
+
+        .calendar__header--right {
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 0.5rem;
+            color: #555;
+
+            i {
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                cursor: pointer;
+
+                &:hover {
+                    background: rgba(100,100,100,0.1);
+                }
+            }
+
+            #close-calendar {
+                margin-left: 0.2rem;
+            }
+        }
+    }
+// right sidebar calendar header end
+
+// right sidebar calendar nav end
+    &--nav {
+        width: 20rem;
+        height: 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #aaa;
+     //   position: fixed;
+        top: 4rem;
+
+            .calendar-btn {
+                width: fit-content;
+                padding: 0.2rem;
+                height: 2rem;
+                color: #456fff;
+                font-size: 1rem;
+                font-weight: 600;
+                border: none;
+                outline: none;
+                background: transparent;
+                margin-left: 0.5rem;
+                cursor: pointer;
+                border-radius: 3px;
+
+                &:hover {
+                    background: rgba(100,100,100,0.1);
+                }
+            }
+
+            .calendar-dots {
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.5rem;
+                cursor: pointer;
+                border-radius: 50%;
+
+                i {
+                    color: #777;
+                }
+
+                &:hover {
+                    background: rgba(100,100,100,0.1);
+                }
+            }
+    }
+
+    // right sidebar calendar nav end
+
+    // right sidebar calendar main start
+    &--main {
+        width: 100%;
+        height: 80%;
+        overflow-y: scroll;
+      //  position: absolute;
+        top: 2%;
+
+        &::-webkit-scrollbar {
+            width: 0.5rem;
+            background: #aaa;
+        }
+
+        .calendar__item {
+            width: 95%;
+            height: 4rem;
+            color: #777;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 0.5rem;
+            
+            h3 {
+                font-weight: 500;
+                font-size: 1rem;
+                padding-bottom: 0.5rem;
+            }
+
+            p {
+                margin-left: 0.5rem;
+                background: #1b5d1b;
+                color: #fff;
+                font-size: 0.8rem;
+                width: 95%;
+                padding: 0.25rem 0.5rem;
+                border-radius: 3px;
+            }
+        }
+    }
+    // right sidebar calendar main end
+
+    // right sidebar calendar footer start
+    &--footer {
+        width: 100%;
+        height: 8%;
+        position: fixed;
+        margin: auto 0;
+        bottom: 0%;
+        border-top: 1px solid #aaa;
+        z-index: 300;
+        background: #fff;
+        
+        .calendar-create-event {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            color: #456fff;
+
+            i {
+                margin-right: 0.5rem;
+            }
+
+            p {
+                margin: auto 0;
+            }
+        }
+    }
+    // right sidebar calendar footer end
+}
+
+.calendar-hidden {
+    visibility: hidden;
+}

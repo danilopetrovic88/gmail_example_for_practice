@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/972a435119.js" crossorigin="anonymous"></script>
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="gmail.css">
+    <title>Gmail</title>
+</head>
+<body onload="renderDate()">
+
+    <!-- HEADER START -->
+
+    <header class="header">
+        <div class="header__logo-container">
+            <div class="hamburger-menu">
+                <a href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <p id="main-manu">Main Manu</p>
+            </div>
+            <div class="logo">
+                <h2>Example</h2>
+                <p id="gmail-logo-paragraph">Example for practice</p>
+            </div>
+        </div>
+
+        <div class="header__search">
+            <i class="fas fa-search" id="search-icon"></i>
+            <input  type="text" placeholder="Search mail" id="search-input" onfocus="openList()" onfocusout="closeList()">
+            <i class="fas fa-caret-down" id="search-arrow" on></i>
+
+            <ul class="header__search-list">
+                <li class="header__search-list-item">
+                    <div class="user-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <p class="user-email">danilo@gmail.com</p>
+                </li>
+                <li class="header__search-list-item">
+                    <div class="user-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <p class="user-email">danilo@gmail.com</p>
+                </li>
+                <li class="header__search-list-item">
+                    <div class="user-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <p class="user-email">danilo@gmail.com</p>
+                </li>
+                <li class="header__search-list-item">
+                    <div class="user-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <p class="user-email">danilo@gmail.com</p>
+                </li>
+            </ul>
+
+            <!-- Email form start -->
+            <div class="email-form" onfocusout="closeEmailForm();" onfocus="openEmailForm();">
+                <div class="email-form-item">
+                    <label for="">From</label>
+                    <input type="text" class="email-form-input">
+                </div>
+                <div class="email-form-item">
+                    <label for="">To</label>
+                    <input type="text" class="email-form-input">
+                </div>
+                <div class="email-form-item">
+                    <label for="">Subject</label>
+                    <input type="text" class="email-form-input">
+                </div>
+                <div class="email-form-item">
+                    <label for="">Has the words</label>
+                    <input type="text" class="email-form-input">
+                </div>
+                <div class="email-form-item">
+                    <label for="">Doesen't have</label>
+                    <input type="text" class="email-form-input">
+                </div>
+                <div class="email-form-item greater-less">
+                    <label for="">Size</label>
+                    <div id="greater-less-wraper">
+                        <select name="Size" id="greater-less">
+                            <option value="greater then">greater then</option>
+                            <option value="less then">less then</option>
+                        </select>
+                        <input type="text" class="email-form-input">
+                        <select name="MB/KB" id="mb-kb">
+                            <option value="mb">MB</option>
+                            <option value="kb">KB</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="email-form-date" class="email-form-item">
+                    <label id="date-label">Date within</label>
+                    <select name="date" id="date">
+                        <option value="1day">1 day</option>
+                        <option value="3days">3 days</option>
+                        <option value="1week">1 week</option>
+                        <option value="2weeks">2 weeks</option>
+                        <option value="1mounth">1 mounth</option>
+                        <option value="2mounths">2 mounths</option>
+                        <option value="6mounths">6 mounths</option>
+                        <option value="1year">1 year</option>
+                    </select>
+
+                    <input type="text" class="email-form-input" id="date-input" onfocus="openCalendar();" onfocusout="closeCalendar();">
+                   
+
+                    <!-- Calendar start -->
+                    <div id="email-calendar" class="wrapper">
+                        <div class="calendar">
+                            <div class="month">
+                                <div class="prev" onclick="moveDate('prev')">
+                                    <span>&#10094;</span>
+                                </div>
+                                <div>
+                                    <h2 id="month"></h2>
+                                    <p id="date_str"></p>
+                                </div>
+                                <div class="next" onclick="moveDate('next')">
+                                    <span>&#10095;</span>
+                                </div>
+                            </div>
+                            <div class="weekdays">
+                                <div>Sun</div>
+                                <div>Mon</div>
+                                <div>Tue</div>
+                                <div>Wed</div>
+                                <div>Thu</div>
+                                <div>Fri</div>
+                                <div>Sat</div>
+                            </div>
+                            <div class="days">
+                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Calendar end -->
+                </div>
+                <div class="email-form-item">
+                    <label for="">Search</label>
+                    <select name="Search" id="email-search">
+                        <option value="all mail">All Mail</option>
+                        <option value="Inbox">Inbox</option>
+                        <option value="Starred">Starred</option>
+                        <option value="Sent Mail">Sent Mail</option>
+                        <option value="Drafts">Drafts</option>
+                        <option value="Chat">Chat</option>
+                        <option value="Spam">Spam</option>
+                        <option value="Trash">Trash</option>
+                        <option value="Mail&Spam&Trash">Mail & Spam & Trash</option>
+                        <option value="Read Mail">Read Mail</option>
+                        <option value="Unread Mail">Unread Mail</option>
+                        <option value="Social">Social</option>
+                        <option value="Updates">Updates</option>
+                        <option value="Forums">Forums</option>
+                        <option value="Promotions">Promotions</option>
+                        <option value="Unwanted">Unwanted</option>
+                    </select>
+                </div>
+                <div class="email-form-item" id="checkboxes">
+                    <div class="email-form-item-div">
+                        <input type="checkbox" class="email-form-input">
+                        <p>Has attachments</p>
+                    </div>
+                    <div class="email-form-item-div">
+                        <input type="checkbox" class="email-form-input">
+                        <p>Dont include chats</p>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button id="create-filter" onmouseover="showText1();" onmouseout="hideText1();">Create Filter</button>
+                    <p id="create-filter-hover-text">Create some criteria first</p>
+                    <button id="submit-search" onmouseover="showText2();" onmouseout="hideText2();">Search</button>
+                    <p id="submit-search-hover-text">Search mail</p>
+                </div>
+            </div>
+            <!-- Email form end -->
+        </div>
+
+        <nav class="header__nav">
+            <div class="header__nav-links">
+                <div id="support">
+                    <i class="far fa-question-circle"></i>
+                    <p id="support-hover-text">Support</p>
+                </div>
+                <div id="settings">
+                    <i class="fas fa-cog"></i>
+                    <p id="settings-hover-text">Settings</p>
+                </div>
+                <div id="google-apps">
+                    <svg class="gb_We" focusable="false" fill="#fff" width="2rem" height="2rem" viewBox="0 0 24 24"><path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path></svg>
+                    <p id="google-apps-hover-text">Google apps</p>
+                </div>
+                <div id="account">
+                    <span>D</span>
+                    <div id="account-hover-text">
+                        <p>Google account</p>
+                        <p>Danilo Petrović</p>
+                        <p>daniloljubica14@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HEADER END -->
+
+    <!-- MAIN SECTION START -->
+    
+    <section class="main">
+        <!-- main nav start -->
+        <div class="main-nav" style="z-index: 10;">
+            <div class="main-nav-left">
+                <div class="main-nav-checkbox main-nav-item">
+                    <div>
+                        <input type="checkbox">
+                    </div>
+                    <i class="fas fa-sort-down" id="main-nav-checkbox-arrow"></i>
+                    <div id="main-nav-checkbox-list" class="hide-list">
+                        <ul>
+                            <li>All</li>
+                            <li>None</li>
+                            <li>Read</li>
+                            <li>Unread</li>
+                            <li>Starred</li>
+                            <li>Unstarred</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-nav-refresh main-nav-item">
+                    <i class="fas fa-redo"></i>
+                </div>
+                <div class="main-nav-more main-nav-item">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <div class="main-nav-more-text hide-text">
+                        <p>Mark all as read</p>
+                        <div class="line" style="width: 100%; height: 1px; background-color: #aaa;"></div>
+                        <p style="padding: 0.5rem 0;"><i>Select messages to see more actions</i></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-nav-right">
+                <div class="main-nav-counter">
+                    <div class="main-nav-counter-numbers">
+                        <span>1-50</span>
+                        <span>of</span>
+                        <span>1,028</span>
+                    </div>
+                    <div class="main-nav-counter-arrows">
+                        <i class="fas fa-angle-left" id="main-nav-arrow-left"></i>
+                        <i class="fas fa-angle-right" id="main-nav-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main nav end -->
+
+        <!-- main messages start -->
+        <div class="main__messages">
+            
+           
+        </div>
+
+        <!-- main messages end -->
+
+        
+    </section>
+
+    <!-- MAIN SECTION END -->
+
+    <!-- LEFT SIDEBAR START -->
+    <section class="left-sidebar">
+        <div class="left-sidebar__logo">
+            <img src="compose.png" alt="Compose">
+            <p class="left-sidebar__logo-text">Compose</p>
+        </div>
+
+        <div class="left-sidebar__list">
+            <ul>
+                <li>
+                    <i class="fas fa-inbox"></i>
+                    <h3>Inbox</h3>
+                    <span>383</span>
+                </li>
+                <li>
+                    <i class="fas fa-star"></i>
+                    <h3>Starred</h3>
+                </li>
+                <li>
+                    <i class="fas fa-clock"></i>
+                    <h3>Snoozed</h3>
+                </li>
+                <li>
+                    <i class="fas fa-paper-plane"></i>
+                    <h3>Sent</h3>
+                </li>
+                <li>
+                    <i class="fas fa-sticky-note"></i>
+                    <h3>Drafts</h3>
+                    <span>3</span>
+                </li>
+                <li>
+                    <i class="fas fa-times-circle" style="font-size: 0.8rem;"></i>
+                    <h3>Unwanted</h3>
+                </li>
+            </ul>
+
+            <div id="left-sidebar__list-more">
+                <div class="more-wraper">
+                    <i class="fas fa-angle-down"></i>
+                    <h3>More</h3>
+                </div>
+
+                <ul id="more-list">
+                    <li>
+                        <i class="fas fa-exclamation"></i>
+                        <h3>Important</h3>
+                    </li>
+                    <li>
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Chats</h3>
+                    </li>
+                    <li>
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Scheduled</h3>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <h3>All mail</h3>
+                    </li>
+                    <li>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Spam</h3>
+                        <span>1</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-trash"></i>
+                        <h3>Trash</h3>
+                    </li>
+
+                    <li id="categories-wraper">
+                        <i class="fas fa-caret-right"></i>
+                        <h3>Categories</h3>
+
+                        <ul id="categories">
+                            <li>
+                                <i class="fas fa-users"></i>
+                                <h3>Social</h3>
+                                <span>19</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <h3>Updates</h3>
+                                <span>359</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-mail-bulk"></i>
+                                <h3>Forums</h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="fas fa-cog"></i>
+                        <h3>Menage labels</h3>
+                    </li>
+                    <li>
+                        <i class="fas fa-plus"></i>
+                        <h3>Create new label</h3>
+                    </li>
+                    <li>
+                        <i class="fas fa-tag"></i>
+                        <h3>Promotions</h3>
+                        <span>302</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- LEFT SIDEBAR END -->
+
+    <!-- RIGHT SIDEBAR START -->
+    <div class="right-sidebar">
+        <div class="right-sidebar__nav">
+            <div class="right-sidebar__nav-item">
+                <img src="right-sidebar-calendar.png" id="right-sidebar-calendar-icon" alt="Calendar">
+            </div>
+            <div class="right-sidebar__nav-item">
+                <img src="right-sidebar-keep.png" alt="Keep">
+            </div>
+            <div class="right-sidebar__nav-item">
+                <img src="right-sidebar-tasks.png" alt="Tasks">
+            </div>
+            <div class="right-sidebar__nav-item">
+                <img src="right-sidebar-contacts.png" alt="Contacts">
+            </div>
+            <div style="width: 2rem; height: 2px; background-color: #aaa;"></div>
+            <div class="right-sidebar__nav-item">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+
+        <div class="right-sidebar__arrow">
+            <i class="fas fa-angle-right"></i>
+        </div>
+    </div>
+    <!-- RIGHT SIDEBAR END -->
+
+    <!-- Right sidebar loading-calendar start -->
+    <div class="right-sidebar__calendar-loading">
+        <header class="right-sidebar__calendar-loading-header">
+            <div class="calendar-loading__header-left">
+                <h4>CALENDAR</h4>
+                <p>Loading...</p>
+            </div>
+
+            <div class="calendar-loading__header-right">
+                <i class="fas fa-times"></i>
+            </div>
+        </header>
+
+        <section class="right-sidebar__calendar-loading-main">
+            <img src="1200px-Google_Calendar_icon_(2020).svg.png" id="calendar-loading-img" alt="">
+            <div class="calendar-loading__main-img">
+        
+            </div>
+            <div class="calendar-loading__main-circle"></div>
+        </section>
+    </div>
+    <!-- Right sidebar loading calendar end -->
+
+    <!-- RIGHT SIDEBAR CALENDAR START -->
+    <div class="right-sidebar__calendar calendar-hidden">
+        <!-- Right sidebar calendar header start -->
+        <header class="right-sidebar__calendar-header">
+            <div class="calendar__header-left">
+                <h5>CALENDAR</h5>
+                <div id="calendar-date">
+                    <p>Tue, Mar 9</p>
+                    <i class="fas fa-sort-down"></i>
+                </div>
+            </div>
+            <div class="calendar__header-right">
+                <i class="fas fa-external-link-alt"></i>
+                <i class="fas fa-times" id="close-calendar"></i>
+            </div>
+        </header>
+        <!-- Right sidebar calendar header end -->
+
+        <!-- Righr sidebar calendar navigation start -->
+        <div class="right-sidebar__calendar-nav">
+            <button class="calendar-btn">Today</button>
+            <div class="calendar-dots">
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+        </div>
+        <!-- Right sidebar claendar navigation end -->
+
+        <!-- Right sidebar claendar navigation dots show list start -->
+        <div class="right-sidebar__calendar-list" hidden>
+            <div>
+                <p>Day</p>
+                <p>Schedule</p>
+            </div>
+
+            <p>Select calendars</p>
+        </div>
+        <!-- Right sidebar claendar navigation dots show list end -->
+
+        <!-- Right sidebar calendar main section start -->
+        <section class="right-sidebar__calendar-main">
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+            <div class="calendar__item">
+                <h3>Mon, Mar 1, 2021</h3>
+                <p>Good Monday</p>
+            </div>
+        </section>
+        <!-- Right sidebar calendar main section end -->
+
+        <!-- Right sidebar calendar footer start -->
+        <div class="right-sidebar__calendar-footer">
+            <div class="calendar-create-event">
+                <i class="fas fa-plus"></i>
+                <p>Create an event</p>
+            </div>
+        </div>
+        <!-- Right sidebar calendar footer end -->
+    </div>
+    <!-- Right sidebar calendar end -->
+
+    <!-- COMPOSE FORM START -->
+    <div class="compose-form hide-compose">
+        <header class="compose-form__header">
+            <h2>New Message</h2>
+    
+            <div class="compose-form__header-icons">
+                <i class="far fa-window-minimize" id="compose-form__header-minimaze"></i>
+                <i class="fas fa-expand-alt" id="compose-form__header-full-screen"></i>
+                <i class="fas fa-times" id="compose-form__header-close"></i>
+            </div>
+        </header>
+    
+        <div class="compose-form__inputs hide-inputs">
+            <div class="compose-form__inputs-up">
+                <div class="compose-form__inputs-to">
+                    <input type="text" placeholder="To" id="compose-to">
+                    <p id="compose-to-hover-text" class="hide-text">Select contacts</p>
+                </div>
+        
+                <div class="compose-form__inputs-btns">
+                    <button class="cc-btn">Cc</button>
+                    <button class="bcc-btn">Bcc</button>
+                </div>
+            </div>
+    
+            <div class="compose-form__inputs-down">
+                <div class="compose-form__inputs-subject">
+                    <input type="text" placeholder="Subject" id="compose-subject">
+                </div>
+            </div>
+        </div>
+    <!-- textarea start -->
+        <div class="compose-form__textarea">
+            <textarea name="textarea" id="compose-textarea"></textarea>
+
+            <div class="compose-form__textarea-icon-box icon-box-hidden">
+                <div class="icon-box-item item1">
+                    
+                    <i class="fas fa-reply" onmouseover="showHoverTextUndo();" onmouseout="hideHoverTextUndo();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="undo-hover">Undo(Crtl-Z)</p>
+                    </i>
+                    
+                    <i class="fas fa-share" onmouseover="showHoverTextRendo();" onmouseout="hideHoverTextRendo();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="rendo-hover">Rendo(Crtl-Y)</p>
+                    </i>
+                </div>
+                <div class="icon-box-item item2">
+                    <p class="icon-box-item-hover-text hide-hover-text" id="font-family-hover">Font(Crtl-Shift-5, Crtl-Shift-6)</p>
+                    <select name="font" id="select-font-family" onmouseover="showHoverTextFontFamily();" onmouseout="hideHoverTextFontFamily();">
+                        <option value="Sans Serif">Sans Serif</option>
+                        <option value="Serif">Serif</option>
+                        <option value="Fixed Width">Fixed Width</option>
+                        <option value="Wide">Wide</option>
+                        <option value="Narrow">Narrow</option>
+                        <option value="Comic Sans MS">Comic Sand MS</option>
+                        <option value="Garamond">Garamond</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Tahoma">Tahoma</option>
+                        <option value="Trebuchet MS">Trebuchet MS</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                </div>
+                <div class="icon-box-item item3">
+                    <p class="icon-box-item-hover-text hide-hover-text" id="size-hover">Size(Crtl-Shift--, Ctrl-Shift-+)</p>
+                    <i class="fab fa-tumblr" onmouseover="showHoverTextSize();" onmouseout="hideHoverTextSize();"></i>
+                    <select name="size" id="select-size">
+                        <option value="small" style="font-size: 1rem;">Small</option>
+                        <option value="normal" style="font-size: 1.25rem;">Normal</option>
+                        <option value="large" style="font-size: 1.5rem;">Large</option>
+                        <option value="huge" style="font-size: 2rem;">Huge</option>
+                    </select>
+                </div>
+                <div class="icon-box-item item4">
+                    <i class="fas fa-bold" onmouseover="showHoverTextBold();" onmouseout="hideHoverTextBold();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="bold-hover">Bold(Crtl-B)</p>
+                    </i>
+                    <i class="fas fa-italic" onmouseover="showHoverTextItalic();" onmouseout="hideHoverTextItalic();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="italic-hover">Undo(Crtl-Z)</p>
+                    </i>
+                    <i class="fas fa-underline" onmouseover="showHoverTextUnderline();" onmouseout="hideHoverTextUnderline();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="underline-hover">Underline(Crtl-U)</p>
+                    </i>
+                    <i class="fas fa-paint-brush" onmouseover="showHoverTextColor();" onmouseout="hideHoverTextColor();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="text-color-hover">Text color</p>
+                    </i>
+                </div>
+                <div class="icon-box-item item5">
+                    <p class="icon-box-item-hover-text hide-hover-text" id="align-hover">Align</p>
+                    <div class="text-align">
+                        <i class="fas fa-align-left" onmouseover="showHoverTextAlign();" onmouseout="hideHoverTextAlign();"></i>
+                        <i class="fas fa-align-center" style="display: none;"></i>
+                        <i class="fas fa-align-right" style="display: none;"></i>
+                    </div>
+                </div>
+                <div class="icon-box-item item6">
+                    <i class="fas fa-list-ol" onmouseover="showHoverTextOrderedList();" onmouseout="hideHoverTextOrderedList();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="ol-hover">Numbered list (Ctrl-Shift-7</p>
+                    </i>
+                    <i class="fas fa-list-ul" onmouseover="showHoverTextUnorderedList();" onmouseout="hideHoverTextUnorderedList();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="ul-hover">Bulleted list(Crtl-Shift-8)</p>
+                    </i>
+                    <i class="fas fa-indent" onmouseover="showHoverTextIndentLess();" onmouseout="hideHoverTextIndentLess();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="indent-less-hover">Indent less(Crtl-Shift-[)</p>
+                    </i>
+                    <i class="fas fa-indent" onmouseover="showHoverTextIndentMore();" onmouseout="hideHoverTextIndentMore();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="indent-more-hover">Indent more(Crtl-Shift-])</p>
+                    </i>
+                    <i class="fas fa-quote-right" onmouseover="showHoverTextQuote();" onmouseout="hideHoverTextQuote();">
+                        <p class="icon-box-item-hover-text hide-hover-text" id="quote-hover">Quote(Crtl-Shift-9)</p>
+                    </i>
+                </div>
+                <div class="icon-box-item item7">
+                    <p class="icon-box-item-hover-text hide-hover-text" id="strikethrough-hover">Strikethrough(Alt-Shift-5)</p>
+                    <i class="fas fa-strikethrough" onmouseover="showHoverTextStrikethrough();" onmouseout="hideHoverTextStrikethrough();"></i>
+                </div>
+                <div class="icon-box-item item8">
+                    <p class="icon-box-item-hover-text hide-hover-text" id="formating-hover">Remove formating(Ctrl-/)</p>
+                    <i class="fas fa-remove-format" onmouseover="showHoverTextFormat();" onmouseout="hideHoverTextFormat();"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- textarea end -->
+    
+        <div class="compose-form__footer">
+            <div class="compose-form__footer-left">
+                <div class="compose-form__footer-left-btn">
+                    <button id="footer-send-btn">Send</button>
+                    <button id="footer-send-btn-arrow">
+                        <i class="fas fa-sort-down" id="compose-form__footer-left-arrow-down"></i>
+                    </button>
+                </div>
+                <div class="compose-form__footer-left-icon" id="formating-options">
+                    <i class="fab fa-autoprefixer"></i>
+                </div>
+                <div class="compose-form__footer-left-icon" id="attach">
+                    <i class="fas fa-paperclip"></i>
+                </div>
+                <div class="compose-form__footer-left-icon" id="insert-link">
+                    <i class="fas fa-link"></i>
+                </div>
+                <div class="compose-form__footer-left-icon" id="emoji">
+                    <i class="far fa-laugh"></i>
+                </div>
+                <div class="compose-form__footer-left-icon" id="insert-file">
+                    <i class="fab fa-google-drive"></i>
+                </div>
+                <div class="compose-form__footer-left-icon" id="insert-photo">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="compose-form__footer-left-icon" id="confindential-mode">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="compose-form__footer-left-icon" id="insert-signature">
+                    <i class="fas fa-pen-alt"></i>
+                </div>
+            </div>
+
+            <div class="compose-form__footer-right">
+                <div class="compose-form__footer-right-icon">
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+                <div class="compose-form__footer-right-icon">
+                    <i class="fas fa-trash"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COMPOSE FORM END -->
+
+    <!-- Loading page popup start -->
+    <div class="loading-popup hide-popup">
+        <p>Invalid search query-return all mail</p>
+        <i class="fas fa-times" id="popup-close"></i>
+    </div>
+    <!-- Loading page popup end -->
+
+    <script src="main.js"></script>
+    <script src="right-sidebar-loading-calendar.js"></script>
+</body>
+</html>
